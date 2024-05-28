@@ -21,13 +21,20 @@ https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md
 
 ## User
 -- checking the group users
-   getent group <groupname>                
 
-sudo adduser <username>                  // creating a new user
+   getent group <groupname> 
+   
+-- creating a new user
 
-sudo addgroup <groupname>                # creating  a new group
+   sudo adduser <username>                 
 
-sudo adduser <username> <groupname>      # assign a group to a user
+-- creating  a new group
+
+   sudo addgroup <groupname>               
+
+-- assign a group to a user
+
+   sudo adduser <username> <groupname>      
 
 ## Hostname and partitions
 sudo hostnamectl set-hostname <newname>   # rename the hostname
