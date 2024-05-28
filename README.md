@@ -20,9 +20,10 @@ https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md
    uname -v
 
 ## User
-getent group <groupname>                 # checking the group users
+-- checking the group users
+   getent group <groupname>                
 
-sudo adduser <username>                  # creating a new user
+sudo adduser <username>                  // creating a new user
 
 sudo addgroup <groupname>                # creating  a new group
 
