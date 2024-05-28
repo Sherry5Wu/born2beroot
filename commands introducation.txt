@@ -1,0 +1,485 @@
+1. wc
+
+The `wc` command in Unix/Linux is a utility used to count words, lines, characters, and bytes in files or input from standard input (such as a pipeline). The name `wc` stands for "word count."
+
+### Basic Usage
+The general syntax for `wc` is:
+```sh
+wc [options] [file...]
+```
+
+### Options
+Here are some common options you can use with `wc`:
+
+- `-l`: Count lines.
+- `-w`: Count words.
+- `-c`: Count bytes.
+- `-m`: Count characters.
+- `-L`: Display the length of the longest line.
+
+### Examples
+
+1. **Count Lines in a File**
+   To count the number of lines in a file named `example.txt`:
+   ```sh
+   wc -l example.txt
+   ```
+   Output example:
+   ```
+   42 example.txt
+   ```
+   This output indicates there are 42 lines in `example.txt`.
+
+2. **Count Words in a File**
+   To count the number of words in `example.txt`:
+   ```sh
+   wc -w example.txt
+   ```
+   Output example:
+   ```
+   350 example.txt
+   ```
+   This output indicates there are 350 words in `example.txt`.
+
+3. **Count Characters in a File**
+   To count the number of characters in `example.txt`:
+   ```sh
+   wc -m example.txt
+   ```
+   Output example:
+   ```
+   2100 example.txt
+   ```
+   This output indicates there are 2100 characters in `example.txt`.
+
+4. **Count Bytes in a File**
+   To count the number of bytes in `example.txt`:
+   ```sh
+   wc -c example.txt
+   ```
+   Output example:
+   ```
+   2100 example.txt
+   ```
+   This output indicates there are 2100 bytes in `example.txt`.
+
+5. **Find Length of the Longest Line**
+   To find the length of the longest line in `example.txt`:
+   ```sh
+   wc -L example.txt
+   ```
+   Output example:
+   ```
+   80 example.txt
+   ```
+   This output indicates the longest line is 80 characters long in `example.txt`.
+
+6. **Multiple Counts at Once**
+   You can combine options to get multiple counts at once. For example, to get lines, words, and characters:
+   ```sh
+   wc -l -w -m example.txt
+   ```
+   Output example:
+   ```
+   42  350  2100 example.txt
+   ```
+   This indicates there are 42 lines, 350 words, and 2100 characters in `example.txt`.
+
+7. **Using `wc` with Piped Input**
+   You can also use `wc` with piped input. For example, to count the number of lines output by another command:
+   ```sh
+   ls -l | wc -l
+   ```
+   This counts the number of lines produced by the `ls -l` command, effectively counting the number of files and directories in the current directory.
+
+### Summary
+The `wc` command is a versatile tool for counting lines, words, characters, and bytes in text files. By combining different options, you can extract useful information about the contents of your files.
+
+
+2. grep
+The `grep` command in Unix/Linux is a powerful utility used to search for specific patterns or strings within files. The name `grep` stands for "Global Regular Expression Print."
+
+### Basic Usage
+The general syntax for `grep` is:
+```sh
+grep [options] pattern [file...]
+```
+
+### Options
+Here are some common options you can use with `grep`:
+
+- `-i`: Ignore case (makes the search case-insensitive).
+- `-v`: Invert match (select lines that do not match the pattern).
+- `-c`: Count the number of matching lines.
+- `-l`: List file names with matching lines.
+- `-n`: Prefix each matching line with the line number.
+- `-H`: Print the file name for each match (default when multiple files are searched).
+- `-r` or `-R`: Recursively search directories.
+- `-w`: Match whole words only.
+- `-o`: Print only the matching part of the line.
+
+### Examples
+
+1. **Basic Search**
+   To search for the pattern "hello" in a file named `example.txt`:
+   ```sh
+   grep "hello" example.txt
+   ```
+   This command prints all lines in `example.txt` that contain the string "hello".
+
+2. **Case-Insensitive Search**
+   To search for the pattern "hello" in a case-insensitive manner:
+   ```sh
+   grep -i "hello" example.txt
+   ```
+   This command prints all lines containing "hello", "Hello", "HELLO", etc.
+
+3. **Count Matching Lines**
+   To count the number of lines that contain the pattern "hello":
+   ```sh
+   grep -c "hello" example.txt
+   ```
+   This command prints the number of lines that match the pattern.
+
+4. **List Matching Files**
+   To list the names of files that contain the pattern "hello":
+   ```sh
+   grep -l "hello" *.txt
+   ```
+   This command prints the names of all `.txt` files in the current directory that contain the pattern.
+
+5. **Show Line Numbers**
+   To show line numbers along with matching lines:
+   ```sh
+   grep -n "hello" example.txt
+   ```
+   This command prints each matching line preceded by its line number.
+
+6. **Recursive Search**
+   To search for a pattern recursively in a directory and its subdirectories:
+   ```sh
+   grep -r "hello" /path/to/directory
+   ```
+   This command searches for the pattern "hello" in all files within the specified directory and its subdirectories.
+
+7. **Invert Match**
+   To select lines that do not match the pattern:
+   ```sh
+   grep -v "hello" example.txt
+   ```
+   This command prints all lines in `example.txt` that do not contain the string "hello".
+
+8. **Match Whole Words**
+   To search for whole words only:
+   ```sh
+   grep -w "hello" example.txt
+   ```
+   This command prints lines where "hello" appears as a whole word, not as part of another word like "hello123".
+
+9. **Print Only Matching Parts**
+   To print only the matching parts of a line:
+   ```sh
+   grep -o "hello" example.txt
+   ```
+   This command prints only the exact matches of the pattern "hello" from each line.
+
+10. **Using Regular Expressions**
+    To use regular expressions, simply include the pattern. For example, to search for lines that start with "hello":
+    ```sh
+    grep "^hello" example.txt
+    ```
+    This command uses `^` to indicate the start of a line, matching lines that begin with "hello".
+
+### Summary
+The `grep` command is a versatile and powerful tool for searching text using patterns. By combining different options, you can perform a wide range of text processing tasks, from simple searches to complex pattern matching using regular expressions.
+
+
+3. awk
+The `awk` command in Unix/Linux is a powerful text-processing utility used for pattern scanning and processing. It allows you to search for patterns, extract and manipulate data, and generate reports. `awk` is particularly well-suited for working with structured data, such as text files with columns of data.
+
+### Basic Usage
+The general syntax for `awk` is:
+```sh
+awk 'pattern {action}' [file...]
+```
+- `pattern`: A condition that `awk` checks for in each line.
+- `action`: A command or series of commands that `awk` executes on lines that match the pattern.
+- `file`: The input file(s) to process. If no file is specified, `awk` processes standard input.
+
+### Basic Concepts
+- **Fields**: `awk` treats each line of input as a record, divided into fields. By default, fields are separated by whitespace. Fields can be referenced using `$1`, `$2`, ..., `$NF` (where `NF` is the number of fields in the record).
+- **Patterns**: Patterns can be regular expressions, relational expressions, or special patterns like `BEGIN` and `END`.
+- **Actions**: Actions are enclosed in `{}` and can include operations like printing, arithmetic, and string manipulation.
+
+### Examples
+
+1. **Print the Third Column of a File**
+   Suppose you have a file `data.txt` with columns of data separated by spaces or tabs:
+   ```sh
+   awk '{print $3}' data.txt
+   ```
+   This command prints the third column of each line in `data.txt`.
+
+2. **Print Lines Matching a Pattern**
+   To print lines containing the pattern "hello":
+   ```sh
+   awk '/hello/ {print}' data.txt
+   ```
+   This command prints all lines that contain the string "hello".
+
+3. **Print Specific Fields**
+   To print the first and third columns, separated by a dash:
+   ```sh
+   awk '{print $1 "-" $3}' data.txt
+   ```
+   This command prints the first and third fields of each line, separated by a dash.
+
+4. **Sum a Column of Numbers**
+   To sum the values in the second column:
+   ```sh
+   awk '{sum += $2} END {print sum}' data.txt
+   ```
+   This command calculates the sum of the values in the second column and prints the result after processing all lines.
+
+5. **Use Field Separator**
+   If fields are separated by a character other than whitespace, use the `-F` option. For example, if the fields are separated by commas:
+   ```sh
+   awk -F',' '{print $1, $3}' data.csv
+   ```
+   This command prints the first and third fields of each line in a comma-separated file `data.csv`.
+
+6. **Using BEGIN and END Blocks**
+   To execute actions before and after processing the input:
+   ```sh
+   awk 'BEGIN {print "Start"} {print $1} END {print "End"}' data.txt
+   ```
+   This command prints "Start" before processing the file, then prints the first field of each line, and finally prints "End" after processing all lines.
+
+7. **Pattern Matching with Actions**
+   To perform actions on lines that match a pattern:
+   ```sh
+   awk '$2 > 100 {print $1, $2}' data.txt
+   ```
+   This command prints the first and second fields of lines where the second field is greater than 100.
+
+8. **Formatted Output**
+   To format the output, you can use `printf`:
+   ```sh
+   awk '{printf "Name: %s, Age: %d\n", $1, $2}' data.txt
+   ```
+   This command prints the first and second fields in a formatted manner, where `%s` is a string placeholder and `%d` is a decimal (integer) placeholder.
+
+### Summary
+The `awk` command is a highly flexible and powerful tool for text processing, particularly useful for extracting and manipulating data in structured text files. Its ability to handle complex pattern matching and perform a variety of actions makes it an essential tool for Unix/Linux users.
+
+4. what is the syntax of printf in awk command?
+The `printf` function in the `awk` command is used for formatted output, similar to the `printf` function in C. The syntax for `printf` in `awk` is:
+
+```sh
+awk 'BEGIN { printf format, expression1, expression2, ... }'
+```
+
+Here:
+- `format` is a format string that specifies how the output should be formatted. It can include text and format specifiers.
+- `expression1, expression2, ...` are the expressions to be formatted and printed according to the format specifiers.
+
+### Common Format Specifiers
+
+- `%d` or `%i`: Integer
+- `%f`: Floating-point number
+- `%s`: String
+- `%c`: Character
+- `%e` or `%E`: Scientific notation (lowercase or uppercase)
+- `%g` or `%G`: Use the shorter of `%f` or `%e`/`%E`
+- `%x` or `%X`: Hexadecimal (lowercase or uppercase)
+- `%o`: Octal
+- `%%`: Literal `%` character
+
+### Example Usage
+
+1. **Simple Integer and String Formatting:**
+   ```sh
+   awk 'BEGIN { printf "Name: %s, Age: %d\n", "John", 30 }'
+   ```
+   Output:
+   ```
+   Name: John, Age: 30
+   ```
+
+2. **Floating-Point Number with Specific Precision:**
+   ```sh
+   awk 'BEGIN { printf "Pi is approximately %.2f\n", 3.14159 }'
+   ```
+   Output:
+   ```
+   Pi is approximately 3.14
+   ```
+
+3. **Aligning Text:**
+   ```sh
+   awk 'BEGIN { printf "|%10s|%5d|\n", "Item", 20 }'
+   ```
+   Output:
+   ```
+   |      Item|   20|
+   ```
+
+4. **Calculating and Printing Values:**
+   ```sh
+   awk 'BEGIN { total=100; used=45; percent=(used/total)*100; printf "Used: %.2f%%\n", percent }'
+   ```
+   Output:
+   ```
+   Used: 45.00%
+   ```
+
+### Using Variables in `awk`
+
+When using variables in an `awk` script, you can pass them from the shell to `awk` using the `-v` option or directly within an `awk` block.
+
+#### Example with Shell Variables
+
+```sh
+ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+ram_used=$(free --mega | awk '$1 == "Mem:" {print $3}')
+ram_percent=$(awk -v used=$ram_used -v total=$ram_total 'BEGIN { printf "%.2f", used/total*100 }')
+
+echo "Total RAM: $ram_total MB"
+echo "Used RAM: $ram_used MB"
+echo "Used RAM Percentage: $ram_percent%"
+```
+
+### Explanation:
+
+1. **Extract Total and Used RAM:**
+   ```sh
+   ram_total=$(free --mega | awk '$1 == "Mem:" {print $2}')
+   ram_used=$(free --mega | awk '$1 == "Mem:" {print $3}')
+   ```
+
+2. **Pass Variables to `awk` and Calculate Percentage:**
+   ```sh
+   ram_percent=$(awk -v used=$ram_used -v total=$ram_total 'BEGIN { printf "%.2f", used/total*100 }')
+   ```
+
+3. **Print Results:**
+   ```sh
+   echo "Total RAM: $ram_total MB"
+   echo "Used RAM: $ram_used MB"
+   echo "Used RAM Percentage: $ram_percent%"
+   ```
+
+This script correctly calculates the percentage of used RAM and prints it formatted to two decimal places.
+
+
+5. The syntax of if in shell
+The `if` command in shell scripting is used to perform conditional execution of commands. Here is the basic syntax and usage of the `if` command in a shell script:
+
+### Basic Syntax
+```sh
+if [ condition ]; then
+    # Commands to execute if condition is true
+elif [ another_condition ]; then
+    # Commands to execute if another_condition is true
+else
+    # Commands to execute if no condition is true
+fi
+```
+
+### Examples
+
+1. **Simple `if` Statement:**
+   ```sh
+   if [ -f /etc/passwd ]; then
+       echo "The file /etc/passwd exists."
+   fi
+   ```
+   This script checks if the file `/etc/passwd` exists and prints a message if it does.
+
+2. **`if-else` Statement:**
+   ```sh
+   if [ -d /etc ]; then
+       echo "/etc is a directory."
+   else
+       echo "/etc is not a directory."
+   fi
+   ```
+   This script checks if `/etc` is a directory and prints a corresponding message.
+
+3. **`if-elif-else` Statement:**
+   ```sh
+   if [ -r /etc/passwd ]; then
+       echo "The file /etc/passwd is readable."
+   elif [ -w /etc/passwd ]; then
+       echo "The file /etc/passwd is writable."
+   else
+       echo "The file /etc/passwd is neither readable nor writable."
+   fi
+   ```
+   This script checks if `/etc/passwd` is readable or writable and prints a corresponding message.
+
+4. **Comparing Numbers:**
+   ```sh
+   num=10
+   if [ $num -gt 5 ]; then
+       echo "The number is greater than 5."
+   else
+       echo "The number is not greater than 5."
+   fi
+   ```
+   This script compares the value of `num` to 5 and prints a corresponding message.
+
+5. **String Comparison:**
+   ```sh
+   str="hello"
+   if [ "$str" = "hello" ]; then
+       echo "The string is hello."
+   else
+       echo "The string is not hello."
+   fi
+   ```
+   This script compares the value of `str` to the string "hello" and prints a corresponding message.
+
+### Conditional Expressions
+
+- **File Conditions:**
+  - `-e file`: True if the file exists.
+  - `-f file`: True if the file exists and is a regular file.
+  - `-d directory`: True if the directory exists.
+  - `-r file`: True if the file is readable.
+  - `-w file`: True if the file is writable.
+  - `-x file`: True if the file is executable.
+
+- **String Conditions:**
+  - `str1 = str2`: True if the strings are equal.
+  - `str1 != str2`: True if the strings are not equal.
+  - `-z str`: True if the string is empty.
+  - `-n str`: True if the string is not empty.
+
+- **Numeric Conditions:**
+  - `num1 -eq num2`: True if the numbers are equal.
+  - `num1 -ne num2`: True if the numbers are not equal.
+  - `num1 -gt num2`: True if `num1` is greater than `num2`.
+  - `num1 -ge num2`: True if `num1` is greater than or equal to `num2`.
+  - `num1 -lt num2`: True if `num1` is less than `num2`.
+  - `num1 -le num2`: True if `num1` is less than or equal to `num2`.
+
+### Logical Operators
+- `&&`: Logical AND
+- `||`: Logical OR
+- `!`: Logical NOT
+
+### Example with Logical Operators:
+```sh
+if [ -f /etc/passwd ] && [ -r /etc/passwd ]; then
+    echo "The file /etc/passwd exists and is readable."
+else
+    echo "The file /etc/passwd does not exist or is not readable."
+fi
+```
+
+### Summary
+The `if` command is fundamental in shell scripting for controlling the flow of execution based on conditions. Understanding the syntax and various conditional expressions allows you to write more powerful and flexible scripts.
+
+
+
