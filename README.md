@@ -11,13 +11,13 @@ https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md
 ## Simple setup
 1. Check UFW service
    
-   -> sudo ufw status  or -> sudo service ufw status
-3. Check SSH service
+   sudo ufw status     or    sudo service ufw status
+2. Check SSH service
    
-   -> sudo service ssh status
-5. Check the operating system
+   sudo service ssh status
+3. Check the operating system
    
-   -> uname -v
+   uname -v
    
 
 # My Results of Born2beroot
