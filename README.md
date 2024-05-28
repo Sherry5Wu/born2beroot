@@ -21,25 +21,36 @@ https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md
 
 ## User
 getent group <groupname>                 # checking the group users
+
 sudo adduser <username>                  # creating a new user
+
 sudo addgroup <groupname>                # creating  a new group
+
 sudo adduser <username> <groupname>      # assign a group to a user
 
 ## Hostname and partitions
 sudo hostnamectl set-hostname <newname>   # rename the hostname
+
 sudo reboot                               # reboot the VM
+
 lsblk                                     # list the partitions
 
 ## SUDO
 dpkg -s sudo                              # checking if the sudo is installed
+
 cd /var/log/sudo                          # go to sudo folder
+
 cat sudo_config                           # checking the content of sudo_config
+
 sudo cat sudo_config                      # execute a sudo command and checking if the sudo_config log is updated or not
 
 ## UFW
 sudo ufw status  /  sudo ufw status numbered     # list all the existent rules
+
 sudo ufw allow 8080                       # adding a new rule 8080
+
 sudo ufw delete allow 8080                # delete the rule 8080
+
 sudo ufw delete <ID>                      # you also can delete a rule using the ID that in the list that you get using 'sudo ufw status numbered'
 
 ## SSH
@@ -50,7 +61,9 @@ ssh <username>@localhost -p 4242          # localhost can change to IP address, 
 
 ## Script monitoring
 sudo crontab -u root -e                   # modify the cron
+
 sudo systemctl stop cron                  # stop the cron
+
 sudo systemctl start cron                 # start the cron
 
 # My Results of Born2beroot
