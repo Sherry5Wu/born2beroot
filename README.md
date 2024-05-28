@@ -10,10 +10,13 @@ https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md
 # The Commands Using in Evaluation
 ## Simple setup
 1. Check UFW service
+   
    -> sudo ufw status  or -> sudo service ufw status
-2. Check SSH service
+3. Check SSH service
+   
    -> sudo service ssh status
-3. Check the operating system
+5. Check the operating system
+   
    -> uname -v
    
 
